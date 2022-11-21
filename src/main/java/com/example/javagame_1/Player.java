@@ -1,16 +1,19 @@
 package com.example.javagame_1;
 
 public class Player implements Fieldable {
+    //player's control buttons======================
     private static final String MOVE_LEFT = "a";
     private static final String MOVE_RIGHT = "d";
     private static final String MOVE_UP = "w";
     private static final String MOVE_DOWN = "s";
     private static final String NO_MOVE = "x";
+    //=============================================
     private int rowIndex;
     private int columnIndex;
     private Game game;
     private Field field;
 
+    //this symbol displays the player on the field
     @Override
     public String getSymbol() {
         return " @ ";
@@ -39,7 +42,7 @@ public class Player implements Fieldable {
     public void setColumnIndex(int columnIndex) {
         this.columnIndex = columnIndex;
     }
-
+//move of player
     public Boolean makeMove(String cmd) {
         Boolean isIncorrectMove = true;
         switch (cmd) {
@@ -65,7 +68,7 @@ public class Player implements Fieldable {
         }
         return isIncorrectMove;
     }
-
+//move control of player
     public Boolean movePlayer(int deltaRowIndex, int deltaColumnIndex) {
         int newRowIndex = rowIndex + deltaRowIndex;
         int newColumnIndex = columnIndex + deltaColumnIndex;
@@ -87,7 +90,7 @@ public class Player implements Fieldable {
             return true;
         }
     }
-
+//if the player makes a move, his coordinates will be in a new cell, and Empty() will be stored in the player's last position
     public void swapPlayer(int newRowIndex, int newColumnIndex) {
         field.setFieldable(newRowIndex, newColumnIndex, this);
         field.setFieldable(rowIndex, columnIndex, new Empty());

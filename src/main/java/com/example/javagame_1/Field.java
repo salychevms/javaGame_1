@@ -28,7 +28,6 @@ public class Field {
     }
 
     public void showField() {
-        //System.out.println("\n");
         for (int i = 0; i < rowIndex; i++) {
             System.out.println();
             for (int j = 0; j < columnIndex; j++) {

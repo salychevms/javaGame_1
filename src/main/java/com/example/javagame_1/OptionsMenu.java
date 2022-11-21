@@ -52,7 +52,6 @@ public class OptionsMenu {
                     do {
                         System.out.print("---> Rows <---\nLeave blank to keep current value [" + Main.rows + "]\nOr enter new value: ");
                         rows = checkBlank(Main.rows);
-                        System.out.println(Main.rows + " " + rows);
                         System.out.print("---> Columns <---\nLeave blank to keep current value [" + Main.columns + "]\nOr enter new value: ");
                         columns = checkBlank(Main.columns);
                         System.out.print("---> Enemies <---\nLeave blank to keep current value [" + Main.amountOfEnemies + "]\nOr enter new value: ");
@@ -64,7 +63,6 @@ public class OptionsMenu {
                         System.out.print("---> Flowers <---\nLeave blank to keep current value [" + Main.getAmountOfFlowers + "]\nOr enter new value: ");
                         getAmountOfFlowers = checkBlank(Main.getAmountOfFlowers);
                         checkSettings();
-                        System.out.println(check);
                         if (check) {
                             setGameValues();
                             System.out.println("----------------| New settings |----------------");
@@ -93,7 +91,6 @@ public class OptionsMenu {
         int amountOfObjects = amountOfEnemies + getAmountOfFlowers + 1;
         float checker = (float) amountOfObjects / fieldValue;
         if ((checker >= 0.3) && (checker <= 0.7)) {
-            System.out.println(checker);
             check = true;
         } else {
             check = false;

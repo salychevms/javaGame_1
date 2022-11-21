@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     //amount rows of field
     public static int rows;
-    //amount columns of fiels
+    //amount columns of field
     public static int columns;
     public static int amountOfEnemies;
     public static int transistorsNeeded;

@@ -74,7 +74,6 @@ public class Game {
 
     private void possesFlowers() {
         generateFlowers();
-
     }
 
     private void generateFlowers() {
@@ -132,8 +131,9 @@ public class Game {
                 int deltaColumn = randomNumber.nextInt(3) - 1;
                 newRowIndex = rowIndex + deltaRow;
                 newColumnIndex = columnIndex + deltaColumn;
-                if ((newRowIndex < 0) || (newColumnIndex < 0) || (newRowIndex >= field.getRowIndex())
-                        || (newColumnIndex >= field.getColumnIndex()) || (field.getFieldable(newRowIndex, newColumnIndex) instanceof Player)
+                if ((newRowIndex < 0) || (newColumnIndex < 0)
+                        || (newRowIndex >= field.getRowIndex()) || (newColumnIndex >= field.getColumnIndex())
+                        || (field.getFieldable(newRowIndex, newColumnIndex) instanceof Player)
                         || (field.getFieldable(newRowIndex, newColumnIndex) instanceof Enemy)) {
                     regenerateIndex++;
                     isNeededToRegenerate = true;
@@ -144,8 +144,7 @@ public class Game {
                         isNeededToRegenerate = swapEnemy(rowIndex, columnIndex, newRowIndex, newColumnIndex, enemy);
                     }
                 }
-            }
-            while (isNeededToRegenerate && regenerateIndex <= 10);
+            } while (isNeededToRegenerate && regenerateIndex <= 10);
         }
     }
 
@@ -162,8 +161,7 @@ public class Game {
             System.out.println("\nNo more turns left!\n\n*************\n* YOU LOST! *\n*************\n");
             isGameFinished = true;
         } else if (transistorsGathered >= transistorsNeeded) {
-            System.out.println("\nYou have gathered the required " + transistorsGathered
-                    + " number of transistors\n\n************\n* YOU WON! *\n************\n");
+            System.out.println("\nYou have gathered the required " + transistorsGathered + " number of transistors\n\n************\n* YOU WON! *\n************\n");
             isGameFinished = true;
         }
     }
