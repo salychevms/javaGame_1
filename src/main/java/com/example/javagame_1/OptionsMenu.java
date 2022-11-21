@@ -3,20 +3,25 @@ package com.example.javagame_1;
 import java.util.Scanner;
 
 public class OptionsMenu {
+    //default settings for game======================
     public final static int defaultRows = 4;
     public final static int defaultColumns = 4;
     public final static int defaultEnemies = 2;
     public final static int defaultTransistors = 100;
     public final static int defaultMoves = 40;
     public final static int defaultFlowers = 6;
-    public static int rows = 4;
-    public static int columns = 4;
-    public static int amountOfEnemies = 3;
-    public static int transistorsNeeded = 100;
-    public static int moves = 40;
-    public static int getAmountOfFlowers = 6;
+    //===============================================
+    //this parameters use for define new game options in menu
+    public static int rows;
+    public static int columns;
+    public static int amountOfEnemies;
+    public static int transistorsNeeded;
+    public static int moves;
+    public static int getAmountOfFlowers;
+    //==============================================
     static Scanner scan = new Scanner(System.in);
     static int cmd;
+    static boolean check = false;
 
     public static void showOM() {
         do {
@@ -43,9 +48,9 @@ public class OptionsMenu {
                     System.out.println("------------------------------------------------\n");
                     break;
                 case 2:
+                    scan.nextLine();
                     do {
                         System.out.print("---> Rows <---\nLeave blank to keep current value [" + Main.rows + "]\nOr enter new value: ");
-                        scan.nextLine();
                         rows = checkBlank(Main.rows);
                         System.out.println(Main.rows + " " + rows);
                         System.out.print("---> Columns <---\nLeave blank to keep current value [" + Main.columns + "]\nOr enter new value: ");
@@ -59,10 +64,15 @@ public class OptionsMenu {
                         System.out.print("---> Flowers <---\nLeave blank to keep current value [" + Main.getAmountOfFlowers + "]\nOr enter new value: ");
                         getAmountOfFlowers = checkBlank(Main.getAmountOfFlowers);
                         checkSettings();
-                        setGameValues();
-                        System.out.println("----------------| New settings |----------------");
-                        showSettings();
-                    } while (!checkSettings());
+                        System.out.println(check);
+                        if (check) {
+                            setGameValues();
+                            System.out.println("----------------| New settings |----------------");
+                            showSettings();
+                        } else {
+                            System.out.println("\n\n++++++++| Your values is incorrect for start the game! Please redefine values! |++++++++\n");
+                        }
+                    } while (!check);
                     break;
                 case 3:
                     setDefaultGameValues();
@@ -76,18 +86,19 @@ public class OptionsMenu {
         } while (cmd != 4);
     }
 
+    //this method checks the player's settings
+    //if sum of elements more that size of field - player needs to redefine settings
     private static boolean checkSettings() {
-        boolean checkSet;
         int fieldValue = rows * columns;
         int amountOfObjects = amountOfEnemies + getAmountOfFlowers + 1;
-        int check = amountOfObjects / fieldValue;
-        if ((check >= 0.3) || (check <= 0.65)) {
-            checkSet = true;
+        float checker = (float) amountOfObjects / fieldValue;
+        if ((checker >= 0.3) && (checker <= 0.7)) {
+            System.out.println(checker);
+            check = true;
         } else {
-            checkSet = false;
-            System.out.println("\n\n++++++++| Your values is incorrect for start the game! Please redefine values! |++++++++\n");
+            check = false;
         }
-        return checkSet;
+        return check;
     }
 
     private static void showSettings() {

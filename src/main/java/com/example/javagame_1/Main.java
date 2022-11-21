@@ -3,11 +3,15 @@ package com.example.javagame_1;
 import java.util.Scanner;
 
 public class Main {
+    //amount rows of field
     public static int rows;
+    //amount columns of fiels
     public static int columns;
     public static int amountOfEnemies;
     public static int transistorsNeeded;
+    //player steps
     public static int moves;
+    //amount of flowers there spawn transistors
     public static int getAmountOfFlowers;
 
     public static void main(String[] args) {
@@ -16,11 +20,9 @@ public class Main {
         String cmd;
 
         OptionsMenu.setDefaultGameValues();
-
+        //main cycle
         do {
-            System.out.println("=========| Welcome to the funny game! |=========\n" +
-                    "\n----------------| Main menu |----------------" +
-                    "\nSelect button: ");
+            System.out.println("=========| Welcome to the funny game! |=========\n" + "\n----------------| Main menu |----------------" + "\nSelect button: ");
             System.out.println("\t---> Press 1 - Start new game.");
             System.out.println("\t---> Press 2 - Options.");
             System.out.println("\t---> Press 3 - Credits.");
@@ -52,10 +54,7 @@ public class Main {
 
     private static void showCredits() {
         System.out.println("--------------| Credits |--------------");
-        System.out.println("Created by Mikhail Salychev.\n" +
-                "Idea by Dmitrijs Finaskins.\n" +
-                "Version 1.0, last modified on 19.11.2022.\n" +
-                "Contact me at salychevms@gmail.com");
+        System.out.println("Created by Mikhail Salychev.\n" + "Idea by Dmitrijs Finaskins.\n" + "Version 1.0, last modified on 19.11.2022.\n" + "Contact me at salychevms@gmail.com");
         System.out.println("---------------------------------------\n\n\n");
     }
 
